@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.data.mapper.CarMapper">
+	<select id="getAllCarInfo" resultType="cidto">
+		SELECT * FROM carinfo ORDER BY ci_num asc
+	</select>
+	<select id="getInfoOfCar" parameterType="String" resultType="cidto">
+		SELECT * FROM carinfo WHERE ci_num = #{ci_num}
+	</select>
+	<insert id="insertCarList" parameterType="cidto">
+		INSERT INTO carinfo(name,year,type,price,time_price,car_size,photo) VALUES (#{name},#{year},#{type},#{price},#{time_price},#{car_size},#{photo})
+	</insert>
+	<update id="updateCarList" parameterType="cidto">
+		UPDATE carinfo SET name=#{name},year=#{year},type=#{type},price=#{price},time_price=#{time_price},car_size=#{car_size}
+		<if test="photo!='Null'">
+		,photo=#{photo}
+		</if>
+		WHERE ci_num=#{ci_num}
+	</update>
+	<delete id="deleteCarList" parameterType="String">
+		DELETE FROM carinfo WHERE ci_num=#{ci_num}
+	</delete>
+	<select id="getNameOfCar" parameterType="String" resultType="String">
+		SELECT name FROM carinfo WHERE ci_num=#{ci_num}
+	</select>
+</mapper>

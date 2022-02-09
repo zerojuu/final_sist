@@ -1,0 +1,14 @@
+server:
+  port: 9001
+  
+spring:  devtools:    livereload:      enabled: true
+  
+  datasource:    url: jdbc:mysql://sist-final.cvqizixmmtzr.ap-northeast-2.rds.amazonaws.com/sist_final?serverTimezone=Asia/Seoul
+    username: sist
+    password: sist1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    
+mybatis:
+  type-aliases-package: com.data.mapper,com.data.dto
+  mapper-locations:
+  - /mapper/**/*.xml

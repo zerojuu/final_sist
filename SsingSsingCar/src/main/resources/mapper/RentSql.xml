@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.data.mapper.RentMapper">
+<select id="getRezDate" parameterType="String" resultType="rdto">
+SELECT * FROM rent WHERE car_num = #{car_num}
+</select>
+<insert id="insertRez" parameterType="rdto">
+INSERT INTO rent(mem_num,car_num,start_day,end_day,total_price) VALUES (#{mem_num},#{car_num},#{start_day},#{end_day},#{total_price})
+</insert>
+</mapper>

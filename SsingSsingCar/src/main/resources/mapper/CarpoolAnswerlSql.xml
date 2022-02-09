@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.data.mapper.CarpoolAnswerMapper">
+    <insert id="insertCarpoolAnswer" parameterType="cadto">
+        insert into carpoolanswer (cp_num,mem_num,coment,answerday,name,myid) values(#{cp_num},#{mem_num},#{coment},now(),#{name},#{myid})
+    </insert>
+    
+    <select id="getListCarpoolAnswer" parameterType="String" resultType="cadto">
+        select * from carpoolanswer where cp_num=#{cp_num} order by ca_num desc
+    </select>
+    
+    <select id="getCarpoolAnswer" parameterType="String" resultType="cadto">
+    select * from carpoolanswer where ca_num=#{ca_num}
+    </select>
+    
+    <update id="updateCarpoolAnswer" parameterType="cadto">
+        update carpoolanswer set coment=#{coment} where ca_num=#{ca_num}
+    </update>
+    
+    <delete id="deleteCarpoolAnswer" parameterType="String">
+        delete from carpoolanswer where ca_num=#{ca_num}
+    </delete>   
+</mapper>

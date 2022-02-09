@@ -1,0 +1,8 @@
+server:
+  port: 9001
+  
+spring:  devtools:    livereload:      enabled: true
+        datasource:    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: sist-final.cvqizixmmtzr.ap-northeast-2.rds.amazonaws.com?serverTimezone=Asia/Seoul
+    username: sist
+    password: sist1234

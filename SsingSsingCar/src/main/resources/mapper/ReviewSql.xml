@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.data.mapper.ReviewMapper">
+    <select id="getTotalCountOfReview" resultType="int">
+        select count(*) from review
+    </select>
+    
+    <select id="getMaxNumOfReview" resultType="int">
+        select ifnull(max(rv_num),0) from review
+    </select>
+    
+    <insert id="insertOfReview" parameterType="rvdto">
+        insert into review (ci_num,mem_num,coment,myid,rating) values(#{ci_num},#{mem_num},#{coment},#{myid},#{rating})
+    </insert>
+    
+    <select id="getListOfReview" resultType="rvdto">
+        select * from review order by rv_num desc
+    </select>
+    
+    <select id="getReview" parameterType="String" resultType="rvdto">
+        select * from review where rv_num=#{rv_num}
+    </select>
+    
+    <select id="getListOfReviewByCar" resultType="rvdto" parameterType="String">
+        select * from review where ci_num=#{ci_num}
+    </select>  
+    
+    <update id="updateOfReview" parameterType="rvdto">
+        update review set coment=#{coment},rating=#{rating} where rv_num=#{rv_num}
+    </update>
+    
+    <delete id="deleteOfReview" parameterType="String">
+        delete from review where rv_num=#{rv_num}
+    </delete>   
+</mapper>

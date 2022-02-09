@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.data.mapper.SsCarMapper">
+	<select id="getAllDatasOfSsCar" resultType="sdto">
+		SELECT * FROM sscar
+	</select>
+	<select id="getOneDataOfSsCar" parameterType="String" resultType="sdto">
+		SELECT * FROM sscar WHERE car_num=#{car_num}
+	</select>
+	<insert id="ssCarInsert" parameterType="sdto">
+		INSERT INTO sscar(ci_num,grade,latitude,longtitude) VALUES(#{ci_num},#{grade},#{latitude},#{longtitude})
+	</insert>
+	<update id="ssCarUpdate" parameterType="sdto">
+		UPDATE sscar SET ci_num=#{ci_num},grade=#{grade},latitude=#{latitude},longtitude=#{longtitude} WHERE car_num=#{car_num}
+	</update>
+	<delete id="ssCarDelete" parameterType="String">
+		DELETE FROM sscar WHERE car_num=#{car_num}
+	</delete>
+	<select id="getCinumOfCar" resultType="String">
+		SELECT ci_num FROM sscar ORDER BY car_num asc
+	</select>
+	<select id="getDatasOfCarInfoNum" parameterType="String" resultType="sdto">
+		SELECT * FROM sscar WHERE ci_num=#{ci_num}
+	</select>
+</mapper>

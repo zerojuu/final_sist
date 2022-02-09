@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.data.mapper.CarpoolMapper">
+    <select id="getTotalCountOfCarpool" resultType="int">
+        select count(*) from carpool
+    </select>
+     
+    <select id="getMaxNumOfCarpool" resultType="int">
+        select ifnull(max(cp_num),0) from carpool
+    </select>
+    
+    <insert id="insertCarpool" parameterType="cpdto">
+        insert into carpool (mem_num,type,subject,content,writeday,name,myid) values(#{mem_num},#{type},#{subject},#{content},now(),#{name},#{myid})
+    </insert>
+    
+    <select id="getDataOfCarpool" resultType="cpdto" parameterType="String">
+        select * from carpool where cp_num=#{cp_num}
+    </select>
+    
+    <select id="getListOfCarpool" resultType="cpdto" parameterType="HashMap">
+        select * from carpool order by cp_num desc limit #{start},#{perPage}
+    </select>
+    
+    <update id="updateCarpool" parameterType="cpdto">
+        update carpool set subject=#{subject},content=#{content} where cp_num=#{cp_num}
+    </update>
+    
+    <delete id="deleteCarpool" parameterType="String">
+        delete from carpool where cp_num=#{cp_num}
+    </delete> 
+    
+    <update id="updateReadCount" parameterType="String">
+        update carpool set readcount=readcount+1 where cp_num=#{cp_num}
+    </update>  
+</mapper>

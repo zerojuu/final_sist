@@ -1,0 +1,104 @@
+@charset "UTF-8";
+
+.wrapper{
+	width:800px;
+	height:400px;
+	margin: auto;
+	margin-top: 100px;
+	border-top:1px sold #0764d4;
+	border: 1px solid #ddd;
+}
+.car-ttl{width: 798px; height:60px; border-bottom:1px solid #ddd; margin-top:0px;  margin-bottom: 0px; background: #f8fafd}
+.car-ttl ul{height: 60px; }
+.car-ttl li{float:left; margin-top: 10px;}
+.tab-ttl1{vertical-align:middle; margin-left: 80px; font-size: 20px; }
+.tab-ttl2{vertical-align:middle; margin-left: 150px; font-size: 20px;}
+.tab-ttl3{vertical-align:middle; margin-left: 250px; font-size: 20px;}
+.sm-menu { width:800px; font-weight: 500; color: gray; margin-top:200px; margin-bottom: 0px; height: 18px; border-bottom: 1px solid #B0B0B0;} 
+.sm-menu .ttl{float: left; font-size: 12px;}
+.sm-menu .sm-ttl{ color:#0764d4}
+.scar{
+	display:flex;
+	width:200px;
+	height:400px;
+	float:left;
+	margin:5px;
+}
+.map{
+	float:right;
+	width: 300px;
+	height: 300px;
+	margin-top:15px;
+	margin-right: 50px;
+}
+
+li{
+	list-style: none;
+	padding: 5px;
+	cursor: pointer;	
+}
+li.active{
+	color: #4ba6ef;
+	font-weight: bold;
+	border: 1px solid #4ba6ef;	
+}
+li.active::after{
+	background:url("../carphoto/check.png") no-repeat 0px 0px;  
+    content: "";
+    display: inline-block;
+    height: 10px;
+    width: 10px;    
+    margin: 0 3px 0 8px;
+}
+hr{
+	width: 800px;
+}
+.btns .sm-btn{cursor:pointer;
+	display:inline-block;background:#ffbb12; height: 50px;line-height: 52px;font-size: 18px; border-radius:30px;width: 150px;color:#fff;margin-top:20px;margin-bottom:85px; 
+	border:0px;
+	-webkit-box-shadow: 0 0 5px 1px rgba(0,0,0,.3);
+	-moz-box-shadow: 0 0 5px 1px rgba(0,0,0,.3);
+	box-shadow: 0 0 5px 1px rgba(0,0,0,.3);}
+.carnum,.grade{
+	overflow-y: scroll;
+	width:200px;
+	height:300px; 
+	padding:10px;
+	
+	
+	
+} 
+.btns{
+	position:absolute;  
+	border-top:100px;
+	width: 100%;
+}
+/* 스크롤바 설정*/
+.carnum::-webkit-scrollbar{
+   width: 8px;
+ 
+}
+
+/* 스크롤바 막대 설정*/
+.carnum::-webkit-scrollbar-thumb{
+    height: 8px;
+    background-color: #4ba6ef;
+    border-radius: 10px;
+}
+
+/* 스크롤바 뒷 배경 설정*/
+.carnum::-webkit-scrollbar-track{
+    background-color: #d3e3f0;
+}
+
+/* 스크롤바 설정*/
+.grade::-webkit-scrollbar{
+   width: 8px;
+    height: 8px;
+}
+
+
+/* 스크롤바 뒷 배경 설정*/
+.grade::-webkit-scrollbar-track{
+    background-color: #d3e3f0;
+}

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.data.mapper.MemberMapper">
+	<select id="getTotalCountofMember" resultType="int">
+		select count(*) from member
+	</select>
+	
+    <select id="getIdCheck" parameterType="String" resultType="int">
+    select count(*) from member where mem_id=#{mem_id}
+    </select>
+	
+	<select id="getAllDataById" parameterType="String" resultType="mdto">
+	  select * from member where mem_id=#{mem_id}
+	</select>
+	
+	<select id="getLastNumOfMember" resultType="String">
+    select ifnull(max(mem_num),0) from member
+	</select>
+	
+	<select id="getNameOfMember" parameterType="String" resultType="String">
+    select mem_name from member where mem_num=#{mem_num}
+    </select>
+	
+	<insert id="insertOfMember" parameterType="mdto">
+	  insert into member (mem_name,mem_hp,mem_id,mem_pass,mem_email)
+	  values (#{mem_name},#{mem_hp},#{mem_id},#{mem_pass},#{mem_email}) 
+	</insert>
+	
+	<select id="getCheckPass" parameterType="HashMap" resultType="int">
+    select count(*) from member where mem_num=#{mem_num} and mem_pass=#{mem_pass}
+    </select>
+	
+	<update id="updateMember" parameterType="mdto">
+	  update member set mem_hp=#{mem_hp},mem_email=#{mem_email},mem_pass=#{mem_pass}
+	  where mem_num=#{mem_num}
+	</update>
+	
+	<select id="isCorrectLogin" parameterType="HashMap" resultType="int">
+	select count(*) from member where mem_id=#{id} and mem_pass=#{pass}
+	</select>
+	
+	<select id="getListOfRentList" parameterType="String" resultType="rdto">
+	  SELECT * FROM rent where mem_num=#{mem_num} order by rent_num
+	</select>
+		
+	<select id="getCarName" parameterType="String" resultType="String">
+	  SELECT name FROM carinfo WHERE ci_num=#{ci_num} 
+	</select>
+	<select id="getRentReserv" parameterType="String" resultType="HashMap">
+	<!-- select * from member m, sscar s, carinfo c where m.mem_num=#{mem_num} and s.car_num=#{car_num} and c.ci_num=s.ci_num; -->
+	
+	SELECT rent_num, mem_name, mem_hp, mem_id, mem_email,
+	name, year, price, time_price, photo, type,
+	grade, latitude, longtitude,
+	start_day, end_day, total_price 
+	FROM member m LEFT JOIN rent r ON m.mem_num=r.mem_num JOIN sscar s ON s.car_num=r.car_num JOIN carinfo c ON c.ci_num=s.ci_num 
+	where r.rent_num=#{rent_num}
+	</select>
+	
+	<select id="getIdByNameAndHp" parameterType="HashMap" resultType="String">
+	select mem_id from member where mem_name=#{name} and mem_hp=#{hp}
+	</select>
+	
+	<!-- carpool -->
+	<select id="getNameById" parameterType="String" resultType="String">
+    select mem_name from member where mem_id=#{mem_id}
+    </select>
+    
+    <select id="getMemNumById" parameterType="String" resultType="String">
+    select mem_num from member where mem_id=#{mem_id}
+    </select>
+</mapper>
